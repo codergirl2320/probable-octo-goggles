@@ -1,8 +1,13 @@
+
 const express = require('express');
+
 const mongoose = require('mongoose');
 const session = require('express-session');
+
+
 const app = express();
 require('dotenv').config();
+
 
 
 app.get('/', (req,res) => {
@@ -30,4 +35,9 @@ db.on('connected', () => console.log('mongo connected: ', process.env.DATABASE_U
 db.on('disconnected', () => console.log('mongo disconnected'));
 db.on('open', () => {
   console.log('Connection made!');
+
+
+app.listen(process.env.PORT, () => {
+    console.log('listening on port 3000');
+
 });
