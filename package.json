@@ -19,7 +19,10 @@
   },
   "homepage": "https://github.com/codergirl2320/probable-octo-goggles#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-session": "^1.17.0",
+    "mongoose": "^5.9.6"
   }
 }
