@@ -1,3 +1,5 @@
+// DEPENDENCIES
+//=====================
 
 const express = require('express');
 const mongoose = require('mongoose');
@@ -6,6 +8,10 @@ const session = require('express-session');
 
 
 require('dotenv').config();
+
+// MIDDLEWARE
+//=====================
+
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -16,14 +22,8 @@ app.use(session({
 }));
 
 
-
-app.get('/', (req,res) => {
-  res.send('I here I listen')
-})
-
-//  mongoose.connection.once('open', () => {
-//     console.log('connected to mongo');
-// })
+// CONNECTIONS
+//=====================
 
 const db = mongoose.connection;
   const dbupdateobject = {
@@ -34,6 +34,8 @@ const db = mongoose.connection;
   app.listen(process.env.PORT, () => {
     console.log(`listening... ${process.env.PORT}`);
   })
+
+
 mongoose.connect(process.env.DATABASE_URL, dbupdateobject);
 
 db.on('error', (err) => console.log(err.message + ' is Mongod not running?'));
