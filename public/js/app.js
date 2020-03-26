@@ -16,6 +16,7 @@ app.controller('MyController', ['$http', function($http){
     const controller = this;
 
     this.signup = function(){
+      controller.showForm = true;
         $http({
             method:'POST',
             url:'/users',
@@ -32,6 +33,7 @@ app.controller('MyController', ['$http', function($http){
     }; //end of this.signup
 
     this.login = function(){
+      controller.showForm = true;
         $http({
             method:'POST',
             url:'/session',
