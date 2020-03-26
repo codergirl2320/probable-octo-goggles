@@ -57,13 +57,41 @@ h2 {
 }
 
 h4 {
-  color: var(--yellow);
+  color: white;
   font-family: 'Amatic SC', cursive;
 }
 
 input {
   width: 400px;
 }
+
+/* LOG IN / SIGN UP MODAL CSS */
+
+/* Change the body color on sign up or login display */
+
+.modalBody  {
+  background:  #27697F;
+}
+
+.usersDiv {
+  display: flex;
+  flex-direction: row;
+  margin: 1em auto;
+  width: 85%;
+  padding: 1em;
+}
+
+.loginDiv {
+  border: 5px solid var(--yellow);
+  background: var(--green);
+  border-radius: 5px;
+  padding: 1em;
+  margin: 0 auto;
+  box-shadow: -1px 2px 4px black;
+}
+
+
+/* END OF LOG IN ? SIGN UP CSS */
 
 /* FYI: I know I use this ID multiple times and you're not supposed to...but CLASSES don't seem to work on the INPUT tags (not sure if it's an Angular thing or the Skeleton framework) and IDs do...they throw a flag in the console - but they work... */
 #button {
@@ -128,3 +156,53 @@ p {
   font-size: 2vw;
   color: white;
 }
+
+/* FOOTER CSS START */
+
+footer {
+  background: var(--yellow);
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.5em;
+  margin: .2em auto;
+  padding: .3em;
+  width: 97.7%;
+  height: 5.6em;
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid white;
+}
+
+footer ul {
+    margin-top: .1em;
+    margin-bottom: 0
+}
+
+footer a:hover {
+  color: var(--ltblue);
+  transition: .3s;
+}
+
+
+.footerDiv1 {
+  border-right: 1px solid grey;
+  width: 50%;
+  text-align: center;
+}
+
+
+.footerDiv2 {
+  border-left: 1px solid grey;
+  width: 50%;
+  text-align: center;
+}
+
+footer li {
+  list-style: none;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+}
+
+/* FOOTER CSS END */

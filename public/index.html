@@ -11,7 +11,7 @@
     <title>Trippr</title>
   </head>
 
-  <body ng-controller="MyController as ctrl">
+  <body ng-controller="MyController as ctrl" ng-class="(ctrl.bodyChange) ? 'modalBody' : '' ">
 
   <!-- header section -->
     <header>
@@ -21,24 +21,32 @@
 
 <!-- nav bar -->
     <div class="nav">
-      <button ng-click="ctrl.toggleForm()"><h2 class="create-post-button">create post</h2></button>
-      <h2>sign up</h2>
-      <h2>log in</h2>
+      <button ng-click="ctrl.toggleCreate()"><h2 class="create-post-button">create post</h2></button>
+      <button type="button" ng-click="ctrl.toggleSignup()" class="create-post-button"><h2>sign up</h2></button>
+      <button type="button" ng-click="ctrl.toggleLogin()" class="create-post-button"><h2>log in</h2></button>
     </div>
 
 <!-- login section -->
     <section ng-if="ctrl.loggedInUser === false">
-      <form ng-submit="ctrl.signup()">
-        <h4>Username: </h4><input type="text" ng-model="ctrl.signupUsername"/><br/>
-        <h4>Password: </h4><input type="password" ng-model="ctrl.signupPassword"/><br/>
-        <input id="button" type="submit" value="Sign Up"/>
-      </form>
-      <form ng-submit="ctrl.login()">
-        <h4>Username: </h4><input type="text" ng-model="ctrl.loginUsername"/><br/>
-        <h4>Password: </h4><input type="password" ng-model="ctrl.loginPassword"/><br/>
-        <input id="button" type="submit" value="Log In"/>
-      </form>
+
+      <div class="usersDiv">
+        <div class="loginDiv" ng-if="ctrl.showSignup !== false">
+          <form ng-submit="ctrl.signup()">
+            <h4>Username: </h4><input type="text" ng-model="ctrl.signupUsername"/><br/>
+            <h4>Password: </h4><input type="password" ng-model="ctrl.signupPassword"/><br/>
+            <input id="button" type="submit" value="Sign Up"/>
+          </form>
+        </div>
+        <div class="loginDiv" ng-if="ctrl.showLogin !== false">
+          <form ng-submit="ctrl.login()">
+            <h4>Username: </h4><input type="text" ng-model="ctrl.loginUsername"/><br/>
+            <h4>Password: </h4><input type="password" ng-model="ctrl.loginPassword"/><br/>
+            <input id="button" type="submit" value="Log In"/>
+          </form>
+        </div>
+      </div>
     </section>
+
     <section ng-if="ctrl.loggedInUser !== false">
       <h2>Welcome, {{ctrl.loggedInUser.username}}</h2>
       <button ng-click="ctrl.logout()">Log Out</button>
@@ -46,7 +54,7 @@
 
 <!-- create a new post section -->
     <div class="create-box">
-      <form ng-if="ctrl.showForm !== true" ng-submit="ctrl.createTrip()">
+      <form ng-if="ctrl.showCreate !== false" ng-submit="ctrl.createTrip()">
         <img class="post-image" ng-src="{{ctrl.image}}"></img><br/>
         <h5>Image: </h5><input type="text" ng-model="ctrl.image"/><br/>
         <h5>Title: </h5><input type="text" ng-model="ctrl.title"/><br/>
@@ -81,5 +89,24 @@
       </div>
     </div>
 
+<!-- FOOTER -->
+
+    <footer>
+      <div class="footerDiv1">
+        <ul>
+          <li><a href="#">CONTACT US</a></li>
+          <li><a href="#">MORE INFORMATION</a></li>
+          <li><a href="#">TERMS AND CONDITIONS</a></li>
+        </ul>
+      </div>
+      <div class="footerDiv2">
+        <ul>
+          <li><a href="#">LEGAL</a></li>
+          <li><a href="#">SHARE OUR SITE ON YOUR PAGE</a></li>
+          <li><a href="#">SECRET COMPARTMENT</a></li>
+        </ul>
+      </div>
+
+    </footer>
   </body>
 </html>
