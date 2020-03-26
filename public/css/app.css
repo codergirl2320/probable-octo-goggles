@@ -1,7 +1,4 @@
 :root {
-  --gray: #BDCFDA;
-  --light: #A6918D;
-  --medium: #733F34;
   --yellow: #F3DB41;
   --green: #8CA35B;
   --ltblue: #41B0D5;
@@ -15,7 +12,6 @@ body {
 header {
   height: 300px;
   overflow: hidden;
-  border-bottom: 3px solid var(--yellow);
 }
 
 #header-image {
@@ -32,17 +28,47 @@ h1 {
   margin-left: 20px;
 }
 
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  height: 50px;
+  width: 100%;
+  background-color: var(--yellow);
+}
+
+h2 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--dkblue);
+  margin: 0 25px 0 0;
+  align-self: center;
+}
+
+h4 {
+  color: var(--yellow);
+  font-family: 'Amatic SC', cursive;
+}
+
 input {
   width: 400px;
 }
 
-.trip-images {
-  width: 400px;
+#button {
   border: 3px solid var(--yellow);
+  color: white;
+  padding-bottom: 38px;
+  width: 170px;
 }
 
 .post-image {
   width: 200px;
+}
+
+button {
+  border: 3px solid var(--yellow);
+  color: white;
+  padding-bottom: 38px;
 }
 
 .trip-container {
@@ -60,10 +86,9 @@ input {
   text-align: center;
 }
 
-p {
-  font-family: 'Sue Ellen Francisco', cursive;
-  font-size: 2vw;
-  color: white;
+.trip-images {
+  width: 400px;
+  border: 3px solid var(--yellow);
 }
 
 h3 {
@@ -72,11 +97,14 @@ h3 {
   color: white;
 }
 
-.read-link {
+h5 {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 2vw;
   color: var(--yellow);
 }
 
-
-
-
-font-family: 'Shadows Into Light', cursive;
+p {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 2vw;
+  color: white;
+}

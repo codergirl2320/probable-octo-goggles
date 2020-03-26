@@ -16,6 +16,45 @@
       <img id="header-image" src="/images/map_header.jpg"/>
     </header>
 
+    <div class="nav">
+      <button ng-click="ctrl.toggleForm()"><h2>Add New Trip</h2></button>
+      <h2>Sign Up</h2>
+      <h2>Log In</h2>
+    </div>
+
+
+    <div class="create-box">
+      <form ng-if="ctrl.showForm !== true" ng-submit="ctrl.createTrip()">
+        <img class="post-image" ng-src="{{ctrl.image}}"></img><br/>
+        <h5>Image: </h5><input type="text" ng-model="ctrl.image"/><br/>
+        <h5>Title: </h5><input type="text" ng-model="ctrl.title"/><br/>
+        <h5>Story: </h5><input type="text" ng-model="ctrl.story"/><br/>
+        <input id="button" type="submit" value="Create Post"/>
+      </form>
+    </div>
+
+
+    <section ng-if="ctrl.loggedInUser === false">
+      <form ng-submit="ctrl.signup()">
+        <h4>Username: </h4><input type="text" ng-model="ctrl.signupUsername"/><br/>
+        <h4>Password: </h4><input type="password" ng-model="ctrl.signupPassword"/><br/>
+        <input id="button" type="submit" value="Sign Up"/>
+      </form>
+      <form ng-submit="ctrl.login()">
+        <h4>Username: </h4><input type="text" ng-model="ctrl.loginUsername"/><br/>
+        <h4>Password: </h4><input type="password" ng-model="ctrl.loginPassword"/><br/>
+        <input id="button" type="submit" value="Log In"/>
+      </form>
+    </section>
+
+    <section ng-if="ctrl.loggedInUser !== false">
+      <h2>Welcome, {{ctrl.loggedInUser.username}}</h2>
+      <button ng-click="ctrl.logout()">Log Out</button>
+    </section>
+
+
+
+
     <div class="trip-container">
       <div class="trip-box" ng-repeat="trip in ctrl.trips">
         <img class="trip-images" ng-src="{{trip.image}}"/><br/>
@@ -25,31 +64,18 @@
           <input type="text" ng-model="ctrl.updatedImage" placeholder="{{trip.image}}"/><br/>
           <input type="text" ng-model="ctrl.updatedTitle" placeholder="{{trip.title}}"/><br/>
           <input type="text" ng-model="ctrl.updatedStory" placeholder="{{trip.story}}"/><br/>
-          <input type="submit" value="Save Changes">
+          <input id="button" type="submit" value="Save Changes">
         </form>
 
-        <a class="read-link" ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#">Read Story</a><br/>
+        <a ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#"><h5>read story</h5></a><br/>
         <div ng-if="$index === ctrl.indexOfTripToShow">
           <p>{{trip.story}}</p>
 
-          <a ng-if="$index !== ctrl.indexOfEditFormToShow" ng-click="ctrl.indexOfEditFormToShow = $index; ctrl.updatedImage = trip.updatedImage; ctrl.updatedStory = trip.updatedStory; ctrl.updatedTitle = trip.updatedTitle"  href="#">Edit this Trip</a><br/>
+          <a ng-if="$index !== ctrl.indexOfEditFormToShow" ng-click="ctrl.indexOfEditFormToShow = $index; ctrl.updatedImage = trip.updatedImage; ctrl.updatedStory = trip.updatedStory; ctrl.updatedTitle = trip.updatedTitle"  href="#"><h5>edit this trip</h5></a><br/>
 
           <button ng-click="ctrl.deleteTrip(trip)">Delete Trip</button><br/>
         </div>
       </div>
-    </div>
-
-    <div class="create-box">
-      <button ng-click="ctrl.toggleForm()">Add New Trip</button>
-
-      <form ng-if="ctrl.showForm !== true" ng-submit="ctrl.createTrip()">
-        <img class="post-image" ng-src="{{ctrl.image}}"></img><br/>
-        <h5>Image: </h5><input type="text" ng-model="ctrl.image"/><br/>
-        <h5>Title: </h5><input type="text" ng-model="ctrl.title"/><br/>
-        <h5>Story: </h5><input type="text" ng-model="ctrl.story"/><br/>
-        <input type="submit" value="Create Post"/>
-      </form>
-
     </div>
 
   </body>
