@@ -12,7 +12,7 @@ const User = require('../models/usermodel.js')
 // START A NEW SESSION UPON LOG IN
 
 router.post('/', (req, res) => {
-  User.findOne({unsername: req.body.username},(error, foundUser) => {
+  User.findOne({username: req.body.username},(error, foundUser) => {
     if (foundUser === null){
 // if the user couldnt be found send the message --->
       res.json({
