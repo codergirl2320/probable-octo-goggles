@@ -6,6 +6,7 @@ app.controller('MyController', ['$http', function($http){
     this.story = null;
     this.loggedInUser = false;
     this.indexOfEditFormToShow = null;
+    this.indexOfTripToShow = null;
 
     const controller = this;
 
@@ -73,7 +74,9 @@ app.controller('MyController', ['$http', function($http){
             }
         }).then(
             function(response){
-                controller.place = null;
+                controller.title = null;
+                controller.story = null;
+                controller.image = ' ';
                 controller.getTrip();
             },
             function(error){
@@ -105,9 +108,6 @@ app.controller('MyController', ['$http', function($http){
             }
         }).then(
             function(response){
-                controller.updatedImage = null;// clears field
-                controller.updatedTitle = null;// clears field
-                controller.updatedStory = null;// clears field
                 controller.indexOfEditFormToShow = null;
                 controller.getTrip();
             },
@@ -127,6 +127,12 @@ app.controller('MyController', ['$http', function($http){
         )
     }; // end of getTrip
 
+    controller.showForm = true;
+
+    this.toggleForm = () => {
+      controller.showForm = !controller.showForm
+    }
+
     this.getTrip();
 
     $http({
@@ -139,4 +145,5 @@ app.controller('MyController', ['$http', function($http){
             }
         })
 
-}]; // end of app.controller
+
+}]); // end of app.controller
