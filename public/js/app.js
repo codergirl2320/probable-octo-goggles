@@ -1,8 +1,9 @@
 const app = angular.module('Trippr', []);
 
 app.controller('MyController', ['$http', function($http){
-    this.username = null;
-    this.password = null;
+    this.image = null;
+    this.title = null;
+    this.story = null;
     this.loggedInUser = false;
     this.indexOfEditFormToShow = null;
 
@@ -66,8 +67,9 @@ app.controller('MyController', ['$http', function($http){
             method:'POST',
             url:'/trippr',
             data: {
-              username:this.username,
-              password:this.password
+              image:this.image,
+              title:this.title,
+              story:this.story
             }
         }).then(
             function(response){
@@ -97,10 +99,15 @@ app.controller('MyController', ['$http', function($http){
             method:'PUT',
             url:'/trippr/' + trip._id,
             data: {
-                place:this.place
+              image:this.updatedImage,
+              title:this.updatedTitle,
+              story:this.updatedStory
             }
         }).then(
             function(response){
+                controller.updatedImage = null;// clears field
+                controller.updatedTitle = null;// clears field
+                controller.updatedStory = null;// clears field
                 controller.indexOfEditFormToShow = null;
                 controller.getTrip();
             },
@@ -114,7 +121,7 @@ app.controller('MyController', ['$http', function($http){
             url:'/trippr'
         }).then(
             function(response){
-                console.log(response);
+                controller.trips = response.data;
             },
             function(error){}
         )
