@@ -1,3 +1,5 @@
+
+/* color palette */
 :root {
   --yellow: #F3DB41;
   --green: #8CA35B;
@@ -5,6 +7,7 @@
   --dkblue: #2392BE;
 }
 
+/* all the pieces should be in order from top to bottom and how you encounter them logically if that makes sense*/
 body {
   background-color: var(--dkblue);
 }
@@ -45,6 +48,14 @@ h2 {
   align-self: center;
 }
 
+.create-post-button {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--dkblue);
+  margin: 2.5px 25px 0 0;
+  align-self: center;
+}
+
 h4 {
   color: var(--yellow);
   font-family: 'Amatic SC', cursive;
@@ -54,6 +65,7 @@ input {
   width: 400px;
 }
 
+/* FYI: I know I use this ID multiple times and you're not supposed to...but CLASSES don't seem to work on the INPUT tags (not sure if it's an Angular thing or the Skeleton framework) and IDs do...they throw a flag in the console - but they work... */
 #button {
   border: 3px solid var(--yellow);
   color: white;
@@ -61,8 +73,16 @@ input {
   width: 170px;
 }
 
+.create-box {
+  text-align: center;
+}
+
 .post-image {
   width: 200px;
+}
+
+#story-field {
+  height: 400px;
 }
 
 button {
