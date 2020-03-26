@@ -7,10 +7,16 @@ app.controller('MyController', ['$http', function($http){
     this.loggedInUser = false;
     this.indexOfEditFormToShow = null;
     this.indexOfTripToShow = null;
+    this.bodyChange = false;
+    this.showSignup = false;
+    this.showLogin = false;
+    this.showCreate = false;
+    this.showForm = true;
 
     const controller = this;
 
     this.signup = function(){
+      controller.showForm = true;
         $http({
             method:'POST',
             url:'/users',
@@ -27,6 +33,7 @@ app.controller('MyController', ['$http', function($http){
     }; //end of this.signup
 
     this.login = function(){
+      controller.showForm = true;
         $http({
             method:'POST',
             url:'/session',
@@ -127,10 +134,39 @@ app.controller('MyController', ['$http', function($http){
         )
     }; // end of getTrip
 
-    controller.showForm = true;
+// CONTENT DISPLAY FUNCTIONS
+//=====================
 
-    this.toggleForm = () => {
+// show create form
+
+
+    this.toggleCreate = () => {
+      this.showCreate = !this.showCreate
+      controller.showSignup = false
+      controller.showLogin = false
       controller.showForm = !controller.showForm
+
+
+    }
+
+// show signup modal
+
+    this.toggleSignup = () => {
+      this.bodyChange = !this.bodyChange
+      controller.showSignup = !controller.showSignup
+      controller.showLogin = false
+      controller.showForm = !controller.showForm
+      controller.showCreate = false
+    }
+
+// show login modal
+
+    this.toggleLogin = () => {
+      this.bodyChange = !this.bodyChange
+      controller.showLogin = !controller.showLogin
+      controller.showSignup = false
+      controller.showForm = !controller.showForm
+      controller.showCreate = false
     }
 
     this.getTrip();
