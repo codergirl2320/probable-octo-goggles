@@ -15,8 +15,8 @@ app.controller('MyController', ['$http', function($http){
             method:'POST',
             url:'/users',
             data:{
-              username:this.username,
-              password:this.password
+              username:this.signupUsername,
+              password:this.signupPassword
             }
         }).then(
             function(response){
