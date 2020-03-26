@@ -1,10 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html ng-app="Trippr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script src="/js/app.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Shadows+Into+Light|Sue+Ellen+Francisco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/app.css">
+    <title>Trippr</title>
   </head>
-  <body>
-    <h1>Hello World</h1>
+  <body ng-controller="MyController as ctrl">
+    <header>
+      <h1>Trippr</h1>
+      <img id="header-image" src="/images/map_header.jpg"/>
+    </header>
+
+    <div class="trip-container">
+      <div class="trip-box" ng-repeat="trip in ctrl.trips">
+        <img class="trip-images" ng-src="{{trip.image}}"/><br/>
+        <h3>{{trip.title}}</h3>
+
+        <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editTrip(trip)">
+          <input type="text" ng-model="ctrl.updatedImage" placeholder="{{trip.image}}"/><br/>
+          <input type="text" ng-model="ctrl.updatedTitle" placeholder="{{trip.title}}"/><br/>
+          <input type="text" ng-model="ctrl.updatedStory" placeholder="{{trip.story}}"/><br/>
+          <input type="submit" value="Save Changes">
+        </form>
+
+        <a class="read-link" ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#">Read Story</a><br/>
+        <div ng-if="$index === ctrl.indexOfTripToShow">
+          <p>{{trip.story}}</p>
+
+          <a ng-if="$index !== ctrl.indexOfEditFormToShow" ng-click="ctrl.indexOfEditFormToShow = $index; ctrl.updatedImage = trip.updatedImage; ctrl.updatedStory = trip.updatedStory; ctrl.updatedTitle = trip.updatedTitle"  href="#">Edit this Trip</a><br/>
+
+          <button ng-click="ctrl.deleteTrip(trip)">Delete Trip</button><br/>
+        </div>
+      </div>
+    </div>
+
+    <div class="create-box">
+      <button ng-click="ctrl.toggleForm()">Add New Trip</button>
+
+      <form ng-if="ctrl.showForm !== true" ng-submit="ctrl.createTrip()">
+        <img class="post-image" ng-src="{{ctrl.image}}"></img><br/>
+        <h5>Image: </h5><input type="text" ng-model="ctrl.image"/><br/>
+        <h5>Title: </h5><input type="text" ng-model="ctrl.title"/><br/>
+        <h5>Story: </h5><input type="text" ng-model="ctrl.story"/><br/>
+        <input type="submit" value="Create Post"/>
+      </form>
+
+    </div>
+
   </body>
 </html>
