@@ -5,6 +5,12 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const session = require('express-session');
+const db = mongoose.connection;
+const dbupdateobject = {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+};
 
 
 require('dotenv').config();
@@ -21,16 +27,23 @@ app.use(session({
     saveUninitialized:false
 }));
 
+// CONTROLLERS
+//========================
+
+const tripsController = require('./controllers/trips.js');
+app.use('/trippr', tripsController);
+
+const usersController = require('./controllers/users.js');
+app.use('/users', usersController);
+
+const sessionController = require('./controllers/session.js');
+app.use('/session', sessionController);
+
+
 
 // CONNECTIONS
 //=====================
 
-const db = mongoose.connection;
-  const dbupdateobject = {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-  };
   app.listen(process.env.PORT, () => {
     console.log(`listening... ${process.env.PORT}`);
   })
