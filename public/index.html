@@ -21,6 +21,7 @@
 
 <!-- nav bar -->
     <div class="nav">
+      <input type="text" ng-model="searchBox" placeholder="Travel the page">
       <button><h2>About</h2></button>
       <button ng-click="ctrl.toggleCreate()"><h2 class="create-post-button">create post</h2></button>
       <button type="button" ng-click="ctrl.toggleSignup()" class="create-post-button"><h2>sign up</h2></button>
@@ -64,10 +65,11 @@
       </form>
     </div>
 
+
 <!-- div that contains all the individual posts -->
     <div ng-if="ctrl.showForm === true">
       <div class="trip-container">
-        <div class="trip-box" ng-repeat="trip in ctrl.trips">
+        <div class="trip-box" ng-repeat="trip in ctrl.trips | filter: searchBox">
           <img class="trip-images" ng-src="{{trip.image}}"/><br/>
           <h3>{{trip.title}}</h3>
 
@@ -81,6 +83,10 @@
           <a ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#"><h5>read story</h5></a><br/>
           <div ng-if="$index === ctrl.indexOfTripToShow">
             <p>{{trip.story}}</p>
+            <!-- Like Button -->
+             <p >{{ctrl.like.count}}🚶‍</p>
+             <button ng-click="ctrl.addLike(ctrl.like.count = ctrl.like.count +1)">Like</button>
+            <!-- <button ng-click="ctrl.removeLike(ctrl.like.count = ctrl.like.count -1)">Unlike</button> -->
 
             <a ng-if="$index !== ctrl.indexOfEditFormToShow" ng-click="ctrl.indexOfEditFormToShow = $index; ctrl.updatedImage = trip.updatedImage; ctrl.updatedStory = trip.updatedStory; ctrl.updatedTitle = trip.updatedTitle"  href="#"><h5>edit this trip</h5></a><br/>
 
@@ -89,6 +95,9 @@
         </div>
       </div>
     </div>
+
+
+
 
 <!-- FOOTER -->
 

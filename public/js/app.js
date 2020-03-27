@@ -12,6 +12,7 @@ app.controller('MyController', ['$http', function($http){
     this.showLogin = false;
     this.showCreate = false;
     this.showForm = true;
+    this.like = 0;
 
 
     const controller = this;
@@ -187,6 +188,24 @@ app.controller('MyController', ['$http', function($http){
                 controller.loggedInUser = response.data
             }
         })
+
+// Adding a like emoticon
+
+this.like ={
+  count: 0
+}
+        this.addLike = (like) => {
+          // like[0]++;
+          // this.getTrip();
+        };
+
+
+
+        this.removeLike = (like) => {
+          // like[0]--;
+        };
+
+
 
 
 }]); // end of app.controller
