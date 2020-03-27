@@ -8,8 +8,7 @@ app.controller('MyController', ['$http', function($http){
     this.indexOfEditFormToShow = null;
     this.indexOfTripToShow = null;
     this.bodyChange = false;
-    this.showSignup = false;
-    this.showLogin = false;
+    this.showLogIn = false;
     this.showCreate = false;
     this.showForm = true;
     this.like = 0;
@@ -21,6 +20,7 @@ app.controller('MyController', ['$http', function($http){
 
     this.signup = function(){
       controller.showForm = true;
+      controller.bodyChange = false;
         $http({
             method:'POST',
             url:'/users',
@@ -38,6 +38,7 @@ app.controller('MyController', ['$http', function($http){
 
     this.login = function(){
       controller.showForm = true;
+      controller.bodyChange = false;
         $http({
             method:'POST',
             url:'/session',
@@ -75,6 +76,8 @@ app.controller('MyController', ['$http', function($http){
 
 
     this.createTrip = function(){
+        controller.showCreate = !controller.showCreate;
+        controller.showForm = !controller.showForm
         $http({
             method:'POST',
             url:'/trippr',
@@ -143,38 +146,19 @@ app.controller('MyController', ['$http', function($http){
 
 // show create form
 
-
     this.toggleCreate = () => {
       this.showCreate = !this.showCreate
       controller.showSignup = false
       controller.showLogin = false
       controller.showForm = !controller.showForm
-
-
     }
 
-// show signup modal
+// show signup/login modal
 
-    this.toggleSignup = () => {
-      this.bodyChange = !this.bodyChange
-      controller.showSignup = !controller.showSignup
-      controller.showLogin = false
-      controller.showForm = !controller.showForm
-      controller.showCreate = false
+    this.toggleLogIn = () => {
+      controller.showLogIn = !controller.showLogIn
+      controller.bodyChange = !controller.bodyChange
     }
-
-// show login modal
-
-    this.toggleLogin = () => {
-      this.bodyChange = !this.bodyChange
-      controller.showLogin = !controller.showLogin
-      controller.showSignup = false
-      controller.showForm = !controller.showForm
-      controller.showCreate = false
-    }
-
-
-
 
 
     this.getTrip();
