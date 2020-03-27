@@ -2,6 +2,7 @@
 /* color palette */
 :root {
   --yellow: #F3DB41;
+  --dkyellow: #E6CF3E;
   --green: #8CA35B;
   --ltblue: #41B0D5;
   --dkblue: #2392BE;
@@ -34,25 +35,39 @@ h1 {
 .nav {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  height: 50px;
+  justify-content: space-between;
+  height: 52px;
   width: 100%;
   background-color: var(--yellow);
+}
+
+#search-bar {
+  align-self: center;
+  background-color: var(--dkyellow);
+  border-style: inset;
+  border: 2px solid var(--dkblue);
+  width: 300px;
+  margin: 2px 20px 0 0;
+}
+
+::placeholder {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--dkblue);
 }
 
 h2 {
   font-family: 'Amatic SC', cursive;
   font-size: 2vw;
   color: var(--dkblue);
-  margin: 0 25px 0 0;
-  align-self: center;
+  margin: 5px 0;
 }
 
 .create-post-button {
   font-family: 'Amatic SC', cursive;
   font-size: 2vw;
   color: var(--dkblue);
-  margin: 2.5px 25px 0 0;
+  /* margin: 2.5px 25px 0 0; */
   align-self: center;
 }
 
@@ -101,6 +116,14 @@ input {
   width: 170px;
 }
 
+#nav-button {
+  border: none;
+  padding: none;
+  align-self: center;
+  line-height: 0;
+  text-transform: none;
+}
+
 .create-box {
   text-align: center;
 }
@@ -111,12 +134,6 @@ input {
 
 #story-field {
   height: 400px;
-}
-
-button {
-  border: 3px solid var(--yellow);
-  color: white;
-  padding-bottom: 38px;
 }
 
 .trip-container {
@@ -139,6 +156,14 @@ button {
   border: 3px solid var(--yellow);
 }
 
+.bottom-post-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 25px;
+}
+
 h3 {
   font-family: 'Amatic SC', cursive;
   font-size: 4vw;
@@ -146,17 +171,51 @@ h3 {
 }
 
 h5 {
-  font-family: 'Sue Ellen Francisco', cursive;
+  font-family: 'Amatic SC', cursive;
   font-size: 2vw;
   color: var(--yellow);
+  margin: none;
 }
 
 p {
   font-family: 'Sue Ellen Francisco', cursive;
   font-size: 2vw;
   color: white;
+  margin: 0;
 }
 
+a {
+  text-decoration: none;
+}
+
+#like-button {
+  border: 3px solid var(--yellow);
+  color: white;
+  padding-bottom: 38px;
+  width: 100px;
+  margin: 0 0 0 20px;
+}
+
+.edit-link {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+#delete-button {
+  text-transform: none;
+  border: none;
+  padding: 0;
+  align-self: center;
+  line-height: 1.5;
+  letter-spacing: -.05rem;
+  text-transform: none;
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--yellow);
+  margin-bottom: 8px;
+
+}
 /* FOOTER CSS START */
 
 footer {
@@ -202,7 +261,7 @@ footer li {
 
 footer a {
   text-decoration: none;
-  color: black;
+  color: var(--dkblue);
 }
 
 /* FOOTER CSS END */

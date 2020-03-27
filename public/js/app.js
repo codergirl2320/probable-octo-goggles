@@ -194,6 +194,7 @@ app.controller('MyController', ['$http', function($http){
 this.like ={
   count: 0
 }
+
         this.addLike = (like) => {
           // like[0]++;
           // this.getTrip();
