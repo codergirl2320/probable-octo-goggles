@@ -8,6 +8,7 @@ router.get('/', (req, res) => {
     })
 })
 
+
 router.post('/', (req, res) => {
     Trips.create(req.body, (err, createdTrip) => {
         res.json(createdTrip);

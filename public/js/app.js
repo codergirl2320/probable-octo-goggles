@@ -13,7 +13,10 @@ app.controller('MyController', ['$http', function($http){
     this.showCreate = false;
     this.showForm = true;
 
+
     const controller = this;
+
+
 
     this.signup = function(){
       controller.showForm = true;
@@ -168,6 +171,10 @@ app.controller('MyController', ['$http', function($http){
       controller.showForm = !controller.showForm
       controller.showCreate = false
     }
+
+
+
+
 
     this.getTrip();
 
