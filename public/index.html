@@ -11,7 +11,7 @@
     <title>Trippr</title>
   </head>
 
-  <body ng-controller="MyController as ctrl" ng-class="(ctrl.bodyChange) ? 'modalBody' : '' ">
+  <body ng-controller="MyController as ctrl">
 
   <!-- header section -->
     <header>
@@ -22,8 +22,7 @@
 <!-- nav bar -->
     <div class="nav">
       <div class="nav-links">
-        <button id="nav-button" type="button" ng-click="ctrl.toggleSignup()" class="create-post-button"><h2>Sign Up</h2></button>
-        <button id="nav-button" type="button" ng-click="ctrl.toggleLogin()" class="create-post-button"><h2>Log In</h2></button>
+        <button id="nav-button" type="button" ng-click="ctrl.toggleLogIn()" class="create-post-button"><h2>Log In</h2></button>
         <button id="nav-button"><h2>About</h2></button>
         <button id="nav-button" ng-click="ctrl.toggleCreate()"><h2 class="create-post-button">Create Post</h2></button>
       </div>
@@ -32,21 +31,23 @@
 
 <!-- login section -->
     <section ng-if="ctrl.loggedInUser === false">
-
-      <div class="usersDiv">
-        <div class="loginDiv" ng-if="ctrl.showSignup !== false">
-          <form ng-submit="ctrl.signup()">
-            <h4>Username: </h4><input type="text" ng-model="ctrl.signupUsername"/><br/>
-            <h4>Password: </h4><input type="password" ng-model="ctrl.signupPassword"/><br/>
-            <input id="button" type="submit" value="Sign Up"/>
-          </form>
-        </div>
-        <div class="loginDiv" ng-if="ctrl.showLogin !== false">
-          <form ng-submit="ctrl.login()">
-            <h4>Username: </h4><input type="text" ng-model="ctrl.loginUsername"/><br/>
-            <h4>Password: </h4><input type="password" ng-model="ctrl.loginPassword"/><br/>
-            <input id="button" type="submit" value="Log In"/>
-          </form>
+      <div ng-class="(ctrl.showLogIn) ? 'usersDivFlip' : 'usersDiv' ">
+          <div class="loginDiv" id="usersDiv1">
+            <form ng-submit="ctrl.login()">
+              <h3>Welcome Back!</h3>
+              <h4>Username: </h4><input type="text" ng-model="ctrl.loginUsername"/><br/>
+              <h4>Password: </h4><input type="password" ng-model="ctrl.loginPassword"/><br/>
+              <input id="button" type="submit" value="Log In"/>
+            </form>
+          </div>
+          <div class="loginDiv" id="usersDiv2">
+            <form ng-submit="ctrl.signup()">
+              <h3>New User?</h3>
+              <h4>Pick a Username: </h4><input type="text" ng-model="ctrl.signupUsername"/><br/>
+              <h4>Pick a Password: </h4><input type="password" ng-model="ctrl.signupPassword"/><br/>
+              <input id="button" type="submit" value="Sign Up"/>
+            </form>
+          </div>
         </div>
       </div>
     </section>
@@ -62,15 +63,15 @@
         <img class="post-image" ng-src="{{ctrl.image}}"></img><br/>
         <h5>Image: </h5><input type="text" ng-model="ctrl.image"/><br/>
         <h5>Title: </h5><input type="text" ng-model="ctrl.title"/><br/>
-        <h5>Story: </h5><input id="story-field" type="text" ng-model="ctrl.story"/><br/>
+        <h5>Story: </h5><textarea id="story-field" ng-model="ctrl.story" rows="8" cols="80"></textarea><br/>
+        <!-- <h5>Story: </h5><input id="story-field" type="text" ng-model="ctrl.story"/><br/> -->
         <input id="button" type="submit" value="Create Post"/>
       </form>
     </div>
 
 
 <!-- div that contains all the individual posts -->
-    <div ng-if="ctrl.showForm === true">
-      <div class="trip-container">
+      <div ng-if="ctrl.showForm" ng-class="(ctrl.bodyChange) ? 'blurTrips' : 'trip-container' ">
         <div class="trip-box" ng-repeat="trip in ctrl.trips | filter: searchBox">
           <img class="trip-images" ng-src="{{trip.image}}"/><br/>
           <h3>{{trip.title}}</h3>
@@ -84,7 +85,9 @@
 
           <a ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#"><h5>Read Story</h5></a><br/>
           <div ng-if="$index === ctrl.indexOfTripToShow">
-            <p>{{trip.story}}</p>
+            <div class="pDiv">
+              <p>{{trip.story}}</p>
+            </div>  
             <!-- Like Button -->
             <div class="bottom-post-box">
              <button id="like-button" ng-click="ctrl.addLike(ctrl.like.count = ctrl.like.count +1)">Like</button>
@@ -98,14 +101,13 @@
           </div>
         </div>
       </div>
-    </div>
 
 
 
 
 <!-- FOOTER -->
 
-    <footer>
+    <footer ng-class="(ctrl.bodyChange) ? 'blurFoots' : '' ">
       <div class="footerDiv1">
         <ul>
           <li><a href="#">CONTACT US</a></li>
