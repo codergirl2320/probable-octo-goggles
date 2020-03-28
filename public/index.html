@@ -86,12 +86,12 @@
           <a ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#"><h5>Read Story</h5></a><br/>
           <div ng-if="$index === ctrl.indexOfTripToShow">
             <div class="pDiv">
-              <p>{{trip.story}}</p>
-            </div>  
+              <p class="story-box">{{trip.story}}</p>
+            </div>
             <!-- Like Button -->
             <div class="bottom-post-box">
              <button id="like-button" ng-click="ctrl.addLike(ctrl.like.count = ctrl.like.count +1)">Like</button>
-             <p >{{ctrl.like.count}}🚶‍</p>
+             <p>{{ctrl.like.count}}🚶‍</p>
             <!-- <button ng-click="ctrl.removeLike(ctrl.like.count = ctrl.like.count -1)">Unlike</button> -->
 
             <a ng-if="$index !== ctrl.indexOfEditFormToShow" ng-click="ctrl.indexOfEditFormToShow = $index; ctrl.updatedImage = trip.updatedImage; ctrl.updatedStory = trip.updatedStory; ctrl.updatedTitle = trip.updatedTitle"  href="#"><h5 class="edit-link">Edit Post</h5></a><br/>
