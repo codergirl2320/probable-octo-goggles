@@ -23,10 +23,13 @@
     <div class="nav">
       <div class="nav-links">
         <button ng-if="ctrl.loggedInUser === false" id="nav-button" type="button" ng-click="ctrl.toggleLogIn()" class="create-post-button"><h2>Log In</h2></button>
-        <button ng-if="ctrl.loggedInUser" id="nav-button" ng-click="ctrl.logout()" class="create-post-button">Log Out</button>
+        <button ng-if="ctrl.loggedInUser" id="nav-button" ng-click="ctrl.logout()" class="create-post-button"><h2>Log Out</h2></button>
         <button id="nav-button" ng-click="ctrl.toggleCreate()" ng-if="ctrl.loggedInUser"><h2 class="create-post-button">Create Post</h2></button>
       </div>
-      <h2><input id="search-bar" type="text" ng-model="searchBox" placeholder="Travel the Page"></h2>
+      <div class="nav-right">
+        <ion-icon id="mag-glass" name="search"></ion-icon>
+        <h2><input id="search-bar" type="text" ng-model="searchBox" placeholder="Travel the Page"></h2>
+      </div>
     </div>
 
 <!-- login section -->
@@ -53,7 +56,7 @@
     </section>
 
 
-    <h2 id="welcomeUser" ng-if="ctrl.loggedInUser">Welcome, {{ctrl.loggedInUser.username}}</h2>
+    <h2 id="welcomeUser" ng-if="ctrl.loggedInUser">Welcome, {{ctrl.loggedInUser.username}}!</h2>
 
 <!-- create a new post section -->
     <div class="create-box">
@@ -72,7 +75,11 @@
       <div ng-if="ctrl.showForm" ng-class="(ctrl.bodyChange) ? 'blurTrips' : 'trip-container' ">
         <div class="trip-box" ng-repeat="trip in ctrl.trips | filter: searchBox">
           <img class="trip-images" ng-src="{{trip.image}}"/><br/>
-          <h3>{{trip.title}}</h3>
+          <div class="like-box">
+            <button id="like-button" ng-click="ctrl.addLike(ctrl.like.count = ctrl.like.count +1)"><ion-icon id="pin" name="pin"></ion-icon></button>
+            <p class="count">{{ctrl.like.count}}🚶‍</p>
+          </div>
+          <h3 class="title">{{trip.title}}</h3>
 
           <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editTrip(trip)">
             <input type="text" ng-model="ctrl.updatedImage" placeholder="{{trip.image}}"/><br/>
@@ -81,20 +88,19 @@
             <input id="button" type="submit" value="Save Changes">
           </form>
 
-          <a ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#"><h5>Read Story</h5></a><br/>
+          <a ng-if="$index !== ctrl.indexOfTripToShow" ng-click="ctrl.indexOfTripToShow = $index" href="#"><h5 class="blink">read story</h5></a><br/>
           <div ng-if="$index === ctrl.indexOfTripToShow">
             <div class="pDiv">
               <p>{{trip.story}}</p>
             </div>
             <!-- Like Button -->
             <div class="bottom-post-box">
-             <button id="like-button" ng-click="ctrl.addLike(ctrl.like.count = ctrl.like.count +1)">Like</button>
-             <p>{{ctrl.like.count}}🚶‍</p>
+
             <!-- <button ng-click="ctrl.removeLike(ctrl.like.count = ctrl.like.count -1)">Unlike</button> -->
 
-            <a ng-if="$index !== ctrl.indexOfEditFormToShow" ng-click="ctrl.indexOfEditFormToShow = $index; ctrl.updatedImage = trip.updatedImage; ctrl.updatedStory = trip.updatedStory; ctrl.updatedTitle = trip.updatedTitle"  href="#"><h5 class="edit-link">Edit Post</h5></a><br/>
+            <a ng-if="$index !== ctrl.indexOfEditFormToShow" ng-click="ctrl.indexOfEditFormToShow = $index; ctrl.updatedImage = trip.updatedImage; ctrl.updatedStory = trip.updatedStory; ctrl.updatedTitle = trip.updatedTitle"  href="#"><h5 class="edit-link">edit post</h5></a><br/>
 
-            <a><button id="delete-button" ng-click="ctrl.deleteTrip(trip)">Delete Post</button></a><br/>
+            <a><button id="delete-button" ng-click="ctrl.deleteTrip(trip)">delete post</button></a><br/>
           </div>
           </div>
         </div>
@@ -122,5 +128,6 @@
       </div>
 
     </footer>
+    <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
   </body>
 </html>
