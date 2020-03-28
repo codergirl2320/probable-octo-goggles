@@ -1,0 +1,339 @@
+
+/* color palette */
+:root {
+  --yellow: #F3DB41;
+  --dkyellow: #E6CF3E;
+  --green: #8CA35B;
+  --ltblue: #41B0D5;
+  --dkblue: #2392BE;
+}
+
+/* all the pieces should be in order from top to bottom and how you encounter them logically if that makes sense*/
+body {
+  background-color: var(--dkblue);
+}
+
+header {
+  height: 300px;
+  overflow: hidden;
+}
+
+#header-image {
+  width: 100%;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 10vw;
+  position: absolute;
+  right: 5.5%;
+  top: 4%;
+  color: white;
+  margin-left: 20px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 52px;
+  width: 100%;
+  background-color: var(--yellow);
+}
+
+.nav h2:hover {
+  color: black;
+  transition: .4s;
+}
+
+#search-bar {
+  align-self: center;
+  background-color: var(--dkyellow);
+  border-style: inset;
+  border: 2px solid var(--dkblue);
+  width: 300px;
+  margin: 2px 20px 0 0;
+}
+
+::placeholder {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--dkblue);
+}
+
+h2 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--dkblue);
+  margin: 5px 0;
+}
+
+.create-post-button {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--dkblue);
+  /* margin: 2.5px 25px 0 0; */
+  align-self: center;
+}
+
+h4 {
+  color: white;
+  font-family: 'Amatic SC', cursive;
+}
+
+input {
+  width: 400px;
+  font-family: 'Amatic SC', cursive;
+  color: var(--dkblue);
+  font-size: 2vw;
+}
+
+/* LOG IN / SIGN UP MODAL CSS */
+
+/* Change the body color on sign up or login display */
+
+.blurTrips  {
+  filter: blur(10px);
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.blurFoots  {
+  display: none;
+}
+
+.usersDiv {
+  position: absolute;
+  right: 16em;
+  top: 28em;
+  display: none;
+  width: 60em;
+  padding: 1em;
+  border: 5px solid var(--yellow);
+  background: var(--green);
+  border-radius: 5px;
+  padding: 1em;
+  margin: 0 auto;
+  box-shadow: -1px 2px 4px black;
+}
+
+.usersDivFlip {
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 25em;;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 60em;
+  padding: 1em;
+  border: 5px solid var(--yellow);
+  background: var(--green);
+  border-radius: 5px;
+  padding: 1em;
+  margin: 0 auto;
+  box-shadow: -1px 2px 4px black;
+}
+
+#usersDiv1  {
+  border-right: 1px solid var(--yellow);
+  padding-right: 3.2em;
+}
+
+/* END OF LOG IN ? SIGN UP CSS */
+
+/* FYI: I know I use this ID multiple times and you're not supposed to...but CLASSES don't seem to work on the INPUT tags (not sure if it's an Angular thing or the Skeleton framework) and IDs do...they throw a flag in the console - but they work... */
+#button {
+  border: 3px solid var(--yellow);
+  color: white;
+  padding-bottom: 38px;
+  width: 170px;
+}
+
+#button:hover {
+  background: var(--ltblue);
+  transition: .5s;
+}
+
+#nav-button {
+  border: none;
+  padding: none;
+  align-self: center;
+  line-height: 0;
+  text-transform: none;
+}
+
+.create-box {
+  text-align: center;
+}
+
+.post-image {
+  width: 200px;
+}
+
+#story-field {
+  height: 400px;
+  max-width: 400px;
+  font-family: 'Amatic SC', cursive;
+  color: var(--dkblue);
+  font-size: 2vw;
+}
+
+
+.trip-container {
+  z-index: -1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.trip-box {
+  background-color: var(--green);
+  border: 1px solid var(--dkblue);
+  border-radius: 4px;
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  box-shadow: -1px 1px 4px black;
+}
+
+.trip-images {
+  width: 400px;
+  border: 3px solid var(--yellow);
+}
+
+.bottom-post-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 25px;
+}
+
+h3 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 4vw;
+  color: white;
+}
+
+h5 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--yellow);
+  margin: none;
+}
+
+.pDiv  {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: top;
+}
+
+.story-box {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 2vw;
+  color: white;
+  max-width: 400px;
+}
+
+p {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 2vw;
+  color: white;
+  margin: 0;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+#like-button {
+  border: 3px solid var(--yellow);
+  color: white;
+  padding-bottom: 38px;
+  width: 100px;
+  margin: 0 0 0 20px;
+}
+
+.edit-link {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+}
+
+#delete-button {
+  text-transform: none;
+  border: none;
+  padding: 0;
+  align-self: center;
+  line-height: 1.5;
+  letter-spacing: -.05rem;
+  text-transform: none;
+  font-family: 'Amatic SC', cursive;
+  font-size: 2vw;
+  color: var(--yellow);
+  margin-bottom: 8px;
+}
+
+
+/* FOOTER CSS START */
+
+footer {
+  background: var(--yellow);
+  font-family: 'Amatic SC', cursive;
+  font-size: 1.5em;
+  margin-top: .5em;
+  padding: .3em;
+  width: 100%;
+  height: 5.6em;
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid white;
+  z-index: -1;
+}
+
+footer ul {
+    margin-top: .1em;
+    margin-bottom: 0
+}
+
+footer a:hover {
+  color: var(--ltblue);
+  transition: .3s;
+}
+
+
+.footerDiv1 {
+  border-right: 1px solid grey;
+  width: 50%;
+  text-align: center;
+}
+
+
+.footerDiv2 {
+  border-left: 1px solid grey;
+  width: 50%;
+  text-align: center;
+}
+
+footer li {
+  list-style: none;
+  margin-top: .2em;
+  margin-bottom: 0;
+}
+
+footer a {
+  text-decoration: none;
+  color: var(--dkblue);
+}
+
+/* FOOTER CSS END */
