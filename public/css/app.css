@@ -68,6 +68,12 @@ h2 {
   margin: 5px 0;
 }
 
+#welcomeUser  {
+  color: black;
+  font-size: 4em;
+  text-align: center;
+}
+
 .create-post-button {
   font-family: 'Amatic SC', cursive;
   font-size: 2vw;
