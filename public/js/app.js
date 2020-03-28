@@ -7,10 +7,22 @@ app.controller('MyController', ['$http', function($http){
     this.loggedInUser = false;
     this.indexOfEditFormToShow = null;
     this.indexOfTripToShow = null;
+
+// MODAL VIEW CHANGE VARIABLES
+// ==========================
+
     this.bodyChange = false;
     this.showLogIn = false;
     this.showCreate = false;
     this.showForm = true;
+
+    console.log(this.bodyChange);
+    console.log(this.showLogIn);
+    console.log(this.showForm);
+    console.log(this.showCreate);
+// LIKE COUNTER
+//====================
+
     this.like = 0;
 
 
@@ -19,8 +31,6 @@ app.controller('MyController', ['$http', function($http){
 
 
     this.signup = function(){
-      controller.showForm = true;
-      controller.bodyChange = false;
         $http({
             method:'POST',
             url:'/users',
@@ -32,13 +42,13 @@ app.controller('MyController', ['$http', function($http){
             function(response){
                 console.log(response);
                 // after testing
+                controller.showForm = true;
+                controller.bodyChange = false;
                 controller.loggedInUser = response.data;
             })
     }; //end of this.signup
 
     this.login = function(){
-      controller.showForm = true;
-      controller.bodyChange = false;
         $http({
             method:'POST',
             url:'/session',
@@ -50,6 +60,8 @@ app.controller('MyController', ['$http', function($http){
             function(response){
                 if (response.data.username) {
                     controller.loggedInUser = response.data;
+                    controller.showForm = true;
+                    controller.bodyChange = false;
                 } else {
                     controller.loginUsername = null;
                     controller.loginPassword = null;
@@ -68,6 +80,9 @@ app.controller('MyController', ['$http', function($http){
                 controller.signupUsername = null;
                 controller.signupPassword = null;
                 controller.loggedInUser = false;
+                controller.showLogIn = false;
+                controller.showCreate = false;
+                controller.showForm = true;
             });
     }; // end of this.logout
 
@@ -148,7 +163,6 @@ app.controller('MyController', ['$http', function($http){
 
     this.toggleCreate = () => {
       this.showCreate = !this.showCreate
-      controller.showSignup = false
       controller.showLogin = false
       controller.showForm = !controller.showForm
     }
@@ -157,7 +171,7 @@ app.controller('MyController', ['$http', function($http){
 
     this.toggleLogIn = () => {
       controller.showLogIn = !controller.showLogIn
-      controller.bodyChange = !controller.bodyChange
+      controller.bodyChange = !controller.bodyChange;
     }
 
 
