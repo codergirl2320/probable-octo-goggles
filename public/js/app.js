@@ -20,7 +20,6 @@ app.controller('MyController', ['$http', function($http){
 
     this.signup = function(){
       controller.showForm = true;
-      controller.bodyChange = false;
         $http({
             method:'POST',
             url:'/users',
@@ -38,7 +37,6 @@ app.controller('MyController', ['$http', function($http){
 
     this.login = function(){
       controller.showForm = true;
-      controller.bodyChange = false;
         $http({
             method:'POST',
             url:'/session',
