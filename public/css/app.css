@@ -39,20 +39,45 @@ h1 {
   height: 52px;
   width: 100%;
   background-color: var(--yellow);
+  margin-bottom: 1em;
+}
+
+.nav-links {
+  /* display: flex;
+  flex-direction: row; */
+  justify-content: flex-start;
 }
 
 .nav h2:hover {
-  color: black;
+  color: var(--ltblue);
   transition: .4s;
 }
 
 #search-bar {
   align-self: center;
   background-color: var(--dkyellow);
-  border-style: inset;
-  border: 2px solid var(--dkblue);
+  border-top: 2px solid var(--dkblue);
+  border-right: 2px solid var(--dkblue);
+  border-bottom: 2px solid var(--dkblue);
   width: 300px;
   margin: 2px 20px 0 0;
+}
+
+#mag-glass {
+  background-color: var(--dkblue);
+  padding: 6px;
+  margin-top: 7px;
+  height: 22px;
+  width: 22px;
+  color: white;
+  border: 2px solid var(--dkblue);
+  border-radius: 2px;
+  margin-right: -3px;
+}
+
+.nav-right {
+  display: flex;
+  flex-direction: row;
 }
 
 ::placeholder {
@@ -69,7 +94,7 @@ h2 {
 }
 
 #welcomeUser  {
-  color: black;
+  color: white;
   font-size: 4em;
   text-align: center;
 }
@@ -160,6 +185,8 @@ input {
   color: white;
   padding-bottom: 38px;
   width: 170px;
+  font-family: inherit;
+  background: var(--dkblue);
 }
 
 #button:hover {
@@ -177,6 +204,7 @@ input {
 
 .create-box {
   text-align: center;
+
 }
 
 .post-image {
@@ -214,13 +242,18 @@ input {
   width: 400px;
   border: 3px solid var(--yellow);
 }
+.like-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
 
 .bottom-post-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-top: 25px;
+  justify-content: flex-end;
+  /* align-items: flex-end; */
+  margin-top: 15px;
 }
 
 h3 {
@@ -234,6 +267,18 @@ h5 {
   font-size: 2vw;
   color: var(--yellow);
   margin: none;
+}
+
+.blink {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 2vw;
+  color: var(--yellow);
+  margin: none;
+}
+
+.blink:hover {
+  color: var(--ltblue);
+  transition: .5s;
 }
 
 .pDiv  {
@@ -250,30 +295,59 @@ h5 {
   max-width: 400px;
 }
 
+.count {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 1.5vw;
+  color: white;
+  margin: 0;
+}
+
 p {
   font-family: 'Sue Ellen Francisco', cursive;
   font-size: 2vw;
   color: white;
   margin: 0;
-
 }
 
 a {
   text-decoration: none;
 }
 
-#like-button {
-  border: 3px solid var(--yellow);
+#pin {
+  height: 20px;
+  width: 20px;
   color: white;
-  padding-bottom: 38px;
-  width: 100px;
-  margin: 0 0 0 20px;
+  vertical-align: middle;
+  padding-bottom: 7px;
+  padding-left: 4px;
+  transform: rotate(-20deg);
+}
+
+#like-button {
+  background-color: var(--green);
+  /* border: 2px solid var(--yellow); */
+  border: none;
+  padding: 0;
+  height: 35px;
+  width: 40px;
+  margin: 0;
+}
+
+.title {
+  margin-top: -40px;
+  margin-bottom: 0;
 }
 
 .edit-link {
-  margin: 0;
+  margin: 0 15px 0 0;
   padding: 0;
   font-weight: 600;
+  font-family: 'Sue Ellen Francisco', cursive;
+}
+
+.edit-link:hover {
+  color: var(--ltblue);
+  transition: .5s;
 }
 
 #delete-button {
@@ -284,10 +358,15 @@ a {
   line-height: 1.5;
   letter-spacing: -.05rem;
   text-transform: none;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Sue Ellen Francisco', cursive;
   font-size: 2vw;
   color: var(--yellow);
   margin-bottom: 8px;
+}
+
+#delete-button:hover {
+  color: var(--ltblue);
+  transition: .5s;
 }
 
 
@@ -297,7 +376,7 @@ footer {
   background: var(--yellow);
   font-family: 'Amatic SC', cursive;
   font-size: 1.5em;
-  margin-top: .5em;
+  margin-top: 1em;
   padding: .3em;
   width: 100%;
   height: 5.6em;
