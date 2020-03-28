@@ -83,6 +83,9 @@ h4 {
 
 input {
   width: 400px;
+  font-family: 'Amatic SC', cursive;
+  color: var(--dkblue);
+  font-size: 2vw;
 }
 
 /* LOG IN / SIGN UP MODAL CSS */
@@ -176,6 +179,10 @@ input {
 
 #story-field {
   height: 400px;
+  max-width: 400px;
+  font-family: 'Amatic SC', cursive;
+  color: var(--dkblue);
+  font-size: 2vw;
 }
 
 
@@ -226,6 +233,15 @@ h5 {
 .pDiv  {
   max-width: 400px;
   margin: 0 auto;
+  text-align: center;
+  vertical-align: top;
+}
+
+.story-box {
+  font-family: 'Sue Ellen Francisco', cursive;
+  font-size: 2vw;
+  color: white;
+  max-width: 400px;
 }
 
 p {
@@ -233,6 +249,7 @@ p {
   font-size: 2vw;
   color: white;
   margin: 0;
+
 }
 
 a {
@@ -265,8 +282,9 @@ a {
   font-size: 2vw;
   color: var(--yellow);
   margin-bottom: 8px;
-
 }
+
+
 /* FOOTER CSS START */
 
 footer {
