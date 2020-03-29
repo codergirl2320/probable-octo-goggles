@@ -99,7 +99,7 @@ app.controller('MyController', ['$http', function($http){
             data: {
               image:this.image,
               title:this.title,
-              story:this.story
+              story:this.story,
             }
         }).then(
             function(response){
