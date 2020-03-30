@@ -14,6 +14,21 @@ We all agreed this site was similar to "Yelp", but we put our heads together and
 4. Test every day and debug.
 
 ----
+## Technologies Used
+* AngularJS
+* Node.js
+* Express
+* Express-Session
+* Mongoose
+* Bcrypt
+* HTML
+* CSS
+* GitHub
+* Mongo Atlas
+* Heroku
+* Trello
+
+----
 ## User Stories
 * As a user, I can see the site - but have to join to post.
 * As a user, I can create a login/password and know that they are encrypted and safe.
