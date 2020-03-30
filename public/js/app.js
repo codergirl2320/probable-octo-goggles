@@ -1,4 +1,4 @@
-const app = angular.module('Trippr', []);
+const app = angular.module('Trippr', ['ngStorage']);
 
 app.controller('MyController', ['$http', function($http){
     this.image = null;
@@ -133,7 +133,8 @@ app.controller('MyController', ['$http', function($http){
             data: {
               image:this.updatedImage,
               title:this.updatedTitle,
-              story:this.updatedStory
+              story:this.updatedStory,
+              like:this.updatedLike
             }
         }).then(
             function(response){
@@ -191,11 +192,23 @@ app.controller('MyController', ['$http', function($http){
 
 this.like ={
   count: 0
+
 }
 
-        this.addLike = (like) => {
-          // like[0]++;
-          // this.getTrip();
+        this.addLike = (trip) => {
+          $http({
+              method:'PUT',
+              url:'/trippr/' + trip._id,
+              data: {
+                like:this.updatedLike
+              }
+          }).then(
+              function(response){
+                // this.like ++;
+                // controller.getTrip();
+
+              }
+            )
         };
 
 
@@ -208,3 +221,31 @@ this.like ={
 
 
 }]); // end of app.controller
+
+// app.controller('storageExample', ['$scope','$localStorage',function($scope, $localStorage){
+//       $scope.$storage = $localStorage.$default({
+//       like: 0
+//     });
+//
+//     this.like ={
+//       count: 0
+//
+//     }
+//
+//     this.addLike = (trip) => {
+//       $http({
+//           method:'PUT',
+//           url:'/trippr/' + trip._id,
+//           data: {
+//             like:this.updatedLike
+//           }
+//       }).then(
+//           function(response){
+//             // this.like ++;
+//             // controller.getTrip();
+//
+//           }
+//         )
+//     };
+//
+// }]);

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
     <script src="/js/app.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css">
@@ -76,9 +77,12 @@
       <div ng-if="ctrl.showForm" ng-class="(ctrl.bodyChange) ? 'blurTrips' : 'trip-container' ">
         <div class="trip-box" ng-repeat="trip in ctrl.trips | filter: searchBox">
           <img class="trip-images" ng-src="{{trip.image}}"/><br/>
-          <div class="like-box">
-            <button id="like-button" ng-click="ctrl.addLike(ctrl.like.count = ctrl.like.count +1)"><ion-icon id="pin" name="pin"></ion-icon></button>
-            <p class="count">{{ctrl.like.count}}🚶‍</p>
+          <!-- <div ng-controller="storageExample">
+         <button ng-click="$storage.like = $storage.like + 1">LIKE {{$storage.like}}</button>
+      </div> -->
+          <div class="like-box" ng-model="ctrl.updatedLike" >
+            <button id="like-button"   ng-submit="ctrl.editTrip(trip)"  ng-click="ctrl.addLike(trip.like.count = trip.like.count +1)" ><ion-icon id="pin" name="pin"></ion-icon></button>
+            <p class="count" ng-model="ctrl.addLike"  >{{trip.like.count}}🚶‍</p>
           </div>
           <h3 class="title">{{trip.title}}</h3>
 
