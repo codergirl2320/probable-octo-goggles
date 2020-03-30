@@ -24,7 +24,7 @@ We all agreed this site was similar to "Yelp", but we put our heads together and
 ----
 ## Wireframe
 
-![alt text](IMG_3208.jpg)
+![alt text](/public/images/IMG_3208.jpg)
 
 ----
 ## Resources
